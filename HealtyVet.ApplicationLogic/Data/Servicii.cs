@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HealtyVet.ApplicationLogic.Data
 {
-    public class Service
+    public class Servicii
     {
         public Guid Id { get; set; }
         public string Type { get; set; }

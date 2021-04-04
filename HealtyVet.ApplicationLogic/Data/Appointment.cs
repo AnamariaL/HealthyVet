@@ -11,7 +11,7 @@ namespace HealtyVet.ApplicationLogic.Data
         public DateTime Date { get; set; }
         public Doctor Doctor { get; set; }
         public PetOwner PetOwner { get; set; }
-        public ICollection<Service> Services { get; set; }
+        public ICollection<Servicii> Services { get; set; }
 
     }
 }

@@ -15,7 +15,7 @@ namespace HealtyVet.DataAccess
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetOwner> PetOwners { get; set; }
-        public DbSet<Service> Services { get; set; }
+        public DbSet<Servicii> Services { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
 
     }
