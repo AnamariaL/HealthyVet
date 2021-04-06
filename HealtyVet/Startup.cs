@@ -43,6 +43,8 @@ namespace HealtyVet
             services.AddScoped<IDoctorRepository, DoctorRepository>();
             services.AddScoped<DoctorService>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<AppointmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
