@@ -8,6 +8,7 @@ namespace HealtyVet.Models.AppointmentModel
 {
     public class AddAppointmentViewModel
     {
+
         public string Description { get; set; }
         public DateTime Date { get; set; }
       
