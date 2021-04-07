@@ -12,4 +12,6 @@ namespace HealtyVet.Models.AppointmentModel
         public DateTime Date { get; set; }
 
     }
+
+
 }

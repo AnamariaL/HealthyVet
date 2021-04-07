@@ -31,6 +31,9 @@ namespace HealtyVet.Controllers
             return View();
         }
 
+
+
+
         [HttpPost]
         public IActionResult AddAppointment([FromForm] AddAppointmentViewModel model)
         {
