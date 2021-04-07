@@ -1,0 +1,35 @@
+﻿@model HealtyVet.Models.AppointmentModel.AddAppointmentViewModel
+@{
+    ViewData["Title"] = "AddAppointment";
+}
+<form asp-action="AddAppointment" method="post">
+
+    <div class="row">
+        <div class="col-2">
+          Appointment description
+        </div>
+        <div class="col-10">
+            <input class="form-control" type="text" asp-for="Description" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+           Appointment date
+        </div>
+        <div class="col-10">
+            <textarea class="form-control"
+                      asp-for="Date">
+    
+
+            </textarea>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-secondary">Save</button>
+        </div>
+    </div>
+</form>

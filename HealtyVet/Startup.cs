@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using HealtyVet.DataAccess;
+using HealtyVet.ApplicationLogic.Abstractions;
+using HealtyVet.ApplicationLogic.Services;
 
 namespace HealtyVet
 {
@@ -38,6 +40,11 @@ namespace HealtyVet
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
+            services.AddScoped<DoctorService>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<AppointmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

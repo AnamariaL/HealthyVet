@@ -4,14 +4,16 @@ using HealtyVet.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HealtyVet.DataAccess.Migrations
 {
     [DbContext(typeof(HealtyVetDbContext))]
-    partial class HealtyVetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210404134708_ThirdMigration")]
+    partial class ThirdMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

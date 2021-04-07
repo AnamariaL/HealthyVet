@@ -1,0 +1,18 @@
+﻿@model HealtyVet.ApplicationLogic.Data.Appointment
+@{
+
+    ViewData["Title"] = "DeleteAppointment";
+}
+
+<h1>Do you want to delete the appointment?</h1>
+
+<div>
+    <form asp-action="DeleteAppointment">
+        <input type="hidden" asp-for="Description" />
+        <input type="submit" value="Delete" class="btn btn-secondary" />
+      
+    </form>
+</div>
+
+
+
