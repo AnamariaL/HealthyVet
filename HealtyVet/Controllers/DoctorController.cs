@@ -12,7 +12,7 @@ namespace HealtyVet.Controllers
 {
     public class DoctorController : Controller
     {
-        
+
         private readonly DoctorService doctorService;
         private readonly UserManager<IdentityUser> userManager;
 
@@ -38,7 +38,7 @@ namespace HealtyVet.Controllers
                 return BadRequest();
             }
             var userId = userManager.GetUserId(User);
-            doctorService.AddService(model.Description, model.Price,model.Type);
+            doctorService.AddService(model.Description, model.Price, model.Type);
 
             return Redirect(Url.Action("IndexDoctor", "Doctor"));
 
@@ -91,8 +91,19 @@ namespace HealtyVet.Controllers
                 return BadRequest("Invalid request received");
             }
         }
-        
-   
-    }
+        public ActionResult IndexPetOwner()
+        {
+            try
+            {
+                var services = doctorService.GetAllServices();
 
+                return View(new GetAllServicesViewModel { Services = services });
+            }
+            catch (Exception)
+            {
+                return BadRequest("Invalid request received");
+            }
+
+        }
+    }
 }

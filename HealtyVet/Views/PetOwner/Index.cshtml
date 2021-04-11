@@ -1,0 +1,117 @@
+﻿@model HealtyVet.Models.PetOwnerModel.GetAllFeedbacksViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <title>About our clinic</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/grid.css">
+</head>
+<body>
+    <!-- Content -->
+    <div class="container_24">
+        <div class="indent-bot">
+            <article class="grid_6">
+                <div class="box-1">
+                    <div class="inner">
+                        <h3>Microchip implant</h3>
+                        <p>
+                            We use the latest innovation for chip implantation to make your pet more protected and healthier.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="grid_6">
+                <div class="box-1">
+                    <div class="inner">
+                        <h3>UltraSounds</h3>
+                        <p>Ultrasound is one of the most important consultation services for animals. 50% discount on the ultrasound service for animals registered in our database and pedigree book.</p>
+                    </div>
+                </div>
+            </article>
+            <article class="grid_6">
+                <div class="box-1">
+                    <div class="inner">
+                        <h3>Transport</h3>
+                        <p>
+                            For animals that need more attention (or those without a owner), we offer free transport and increased comfort. Transport is also provided in other localities with a special car and qualified personnel.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="grid_6">
+                <div class="box-1">
+                    <div class="inner">
+                        <h3>Vaccination</h3>
+                        <p>
+                            Come with your pet to our clinic and benefit from the first free vaccine, and at the second 10% discount with a health card and you will also receive a voucher for the microchip implant.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <div class="clear"></div>
+        </div>
+        <div class="wrapper indent-bot-1">
+
+            <h2>Despre noi si despre clinica noastra:</h2>
+            <p style="color:indigo">
+                In a modern space, the clinic has treatment rooms, surgery, waiting, pet shop and veterinary pharmacy, canine beauty salon. Within the veterinary clinic, consultations and treatments, ultrasound investigations, laboratory analyzes, surgeries, descaling are performed.
+                yes Because we know how important it is for your pet to receive full care, our clinic also has the opportunity to enter the hospital. The most difficult cases need a permanent monitoring treatment, which cannot be done in an outpatient system, in a simple office. Here it becomes useful to be able to hospitalize the animals at the veterinary hospital, which ensures the care by the specialist 24 hours a day. to the stress of a car trip.
+                <br />
+
+                Because we know how important it is for your pet to receive complete care, our clinic also has the possibility of hospitalization.
+                The most difficult cases sometimes need permanent treatment and monitoring, which cannot be done in an outpatient system, in a simple office. Here it becomes useful the possibility to hospitalize the animals at the veterinary hospital, which ensures the care by the specialist 24 hours a day.
+                At the hospital, our patients will receive ongoing care and treatment exactly when needed, without being subjected to the stress of a car trip.
+                </br>
+
+            </p>
+
+
+
+        </div>
+        <div class="hr-border"></div>
+        <div class="a1">
+            <h2>Clientii nostri:</h2>
+
+            <a href='@Url.Action("AddFeedback", "PetOwner")' class="btn btn-outline-danger">Add a feedback:</a>
+            <table class="table">
+                <thead>
+                    <tr>
+
+
+                        <th style="text-align:center">
+
+                        </th>
+
+                        <th style="text-align:center"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Feedbacks)
+                    {
+
+                        <tr>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(model => item.Description)
+                            </td>
+                            <td style="text-align:center">
+                                <a asp-action="DeleteFeedback" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete feedback</a>
+                            </td>
+
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        </body>
+
+ 
+
+
+
