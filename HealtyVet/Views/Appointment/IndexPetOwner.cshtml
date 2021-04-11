@@ -1,13 +1,12 @@
 ﻿@model HealtyVet.Models.AppointmentModel.GetAllAppointmentsViewModel
 @{
-    ViewData["Title"] = "IndexDoctor";
+    ViewData["Title"] = "IndexPetOwner";
 }
 
 <h1>Appointments:</h1>
 
-@*<br />
-<a href='@Url.Action("AddAppointment", "Appointment")' class="btn btn-danger">Add appointment</a>*@
-
+<br />
+<a href='@Url.Action("AddAppointment", "Appointment")' class="btn btn-success">Request appointment</a>
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -18,18 +17,15 @@
             <th style="text-align:center">
                 @Html.DisplayName("Date")
             </th>
-            <th style="text-align:center"> Delete appointment</th>
-            <th style="text-align:center"> Update appointment</th>
+            
+            <th style="text-align:center">  Update appointment</th>
 
         </tr>
-
     </thead>
     <tbody>
         @foreach (var item in Model.Appointments)
         {
         <tr>
-
-
 
             <td style="text-align:center">
 
@@ -40,14 +36,11 @@
             <td style="text-align:center">
                 @Html.DisplayFor(model => item.Date)
             </td>
+          
             <td style="text-align:center">
-                <a asp-action="DeleteAppointment" asp-route-id="@item.Id" class="btn btn-light">Delete appointment</a>
-
+                <a asp-action="UpdateAppointment" asp-route-id="@item.Id" class="btn btn-light"> Update appointment</a>
             </td>
-            <td style="text-align:center">
-            <a asp-action="UpdateAppointment" asp-route-id="@item.Id" class="btn btn-light">Update appointment</a>
 
-            </td>
         </tr>
 
         }
