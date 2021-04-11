@@ -45,9 +45,6 @@ namespace HealtyVet
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<AppointmentService>();
-            services.AddScoped<IPetOwnerRepository, PetOwnerRepository>();
-            services.AddScoped<PetOwnerService>();
-            services.AddScoped<IFeedbackRepository, FeedbackRepository>();
 
         }
 
