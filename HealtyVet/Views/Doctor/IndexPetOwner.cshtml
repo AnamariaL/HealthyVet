@@ -1,0 +1,50 @@
+﻿@model HealtyVet.Models.DoctorModel.GetAllServicesViewModel
+@{
+    ViewData["Title"] = "IndexPetOwner";
+}
+
+<h1>What services we offer:</h1>
+
+<br />
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+
+            <th style="text-align:center"> @Html.DisplayName("Service type")</th>
+            <th style="text-align:center">  @Html.DisplayName("Price")</th>
+            <th style="text-align:center">@Html.DisplayName("Description")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Services)
+        {
+            <tr>
+
+                <td style="text-align:center">
+
+                    @Html.DisplayFor(model => item.Type)
+
+                </td>
+
+
+
+                <td style="text-align:center">
+
+                    @Html.DisplayFor(model => item.Price)
+
+                </td>
+
+
+                <td style="text-align:center">
+                    @Html.DisplayFor(model => item.Description)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

@@ -17,11 +17,10 @@
            Appointment date
         </div>
         <div class="col-10">
-            <textarea class="form-control"
-                      asp-for="Date">
-    
-
-            </textarea>
+            <div class="form-group">
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
         </div>
 
     </div>
