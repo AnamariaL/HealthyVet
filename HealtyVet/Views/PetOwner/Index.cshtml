@@ -64,48 +64,86 @@
                 yes Because we know how important it is for your pet to receive full care, our clinic also has the opportunity to enter the hospital. The most difficult cases need a permanent monitoring treatment, which cannot be done in an outpatient system, in a simple office. Here it becomes useful to be able to hospitalize the animals at the veterinary hospital, which ensures the care by the specialist 24 hours a day. to the stress of a car trip.
                 <br />
 
-                
+
             </p>
 
-
-
         </div>
-        <div class="hr-border"></div>
-        <div class="a1">
-            <h2>Our clients:</h2>
 
-            <a href='@Url.Action("AddFeedback", "PetOwner")' class="btn btn-outline-danger">Add a feedback:</a>
-            <table class="table">
-                <thead>
+    @*<table class="table">
+        <thead class="thead-dark">
+            <tr>
+
+                <th style="text-align:center"> @Html.DisplayName("Service type")</th>
+                <th style="text-align:center">  @Html.DisplayName("Price")</th>
+                <th style="text-align:center">@Html.DisplayName("Description")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Servicii)
+            {
+                <tr>
+
+                    <td style="text-align:center">
+
+                        @Html.DisplayFor(model => item.Type)
+
+                    </td>
+
+
+
+                    <td style="text-align:center">
+
+                        @Html.DisplayFor(model => item.Price)
+
+                    </td>
+
+
+                    <td style="text-align:center">
+                        @Html.DisplayFor(model => item.Description)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
+
+
+
+    <div class="hr-border"></div>
+    <div class="a1">
+        <h2>Our clients:</h2>
+
+        <a href='@Url.Action("AddFeedback", "PetOwner")' class="btn btn-outline-danger">Add a feedback:</a>
+        <table class="table">
+            <thead>
+                <tr>
+
+
+                    <th style="text-align:center">
+
+                    </th>
+
+                    <th style="text-align:center"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Feedbacks)
+                {
+
                     <tr>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(model => item.Description)
+                        </td>
+                        <td style="text-align:center">
+                            <a asp-action="DeleteFeedback" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete feedback</a>
+                        </td>
 
-
-                        <th style="text-align:center">
-
-                        </th>
-
-                        <th style="text-align:center"> </th>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Feedbacks)
-                    {
 
-                        <tr>
-                            <td style="text-align:center">
-                                @Html.DisplayFor(model => item.Description)
-                            </td>
-                            <td style="text-align:center">
-                                <a asp-action="DeleteFeedback" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete feedback</a>
-                            </td>
-
-                        </tr>
-
-                    }
-                </tbody>
-            </table>
-        </div>
-        </body>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
 
  
 
