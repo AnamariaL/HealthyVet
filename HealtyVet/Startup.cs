@@ -100,7 +100,7 @@ namespace HealtyVet
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            //CreateUserRoles(services).Wait();
+            CreateUserRoles(services).Wait();
 
         }
         //user roles
