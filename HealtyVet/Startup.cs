@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using HealtyVet.DataAccess;
 using HealtyVet.ApplicationLogic.Abstractions;
 using HealtyVet.ApplicationLogic.Services;
+using HealtyVet.ApplicationLogic.Service;
 
 namespace HealtyVet
 {
@@ -37,19 +38,41 @@ namespace HealtyVet
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
-            services.AddRazorPages();
-            services.AddScoped<IDoctorRepository, DoctorRepository>();
-            services.AddScoped<DoctorService>();
-            services.AddScoped<IServiceRepository, ServiceRepository>();
+              .AddRoles<IdentityRole>()
+             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<AppointmentService>();
+
+
+
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
+            services.AddScoped<DoctorService>();
+
+            services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+
+
+            services.AddScoped<IPetRepository, PetRepository>();
+
+
+            services.AddScoped<IPetOwnerRepository, PetOwnerRepository>();
+            services.AddScoped<PetOwnerService>();
+
+
+
+            services.AddScoped<IServiceRepository, ServiceRepository>();
+
+            services.AddScoped<RegisterService>();
+
+            services.AddControllersWithViews();
+            services.AddRazorPages();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
         {
             if (env.IsDevelopment())
             {
@@ -77,6 +100,43 @@ namespace HealtyVet
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            //CreateUserRoles(services).Wait();
+
         }
+        //user roles
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            IdentityResult roleResult;
+
+            var roleCheck = await RoleManager.RoleExistsAsync("PetOwner");
+            if (!roleCheck)
+            {
+                //here in this line we are creating admin role and seed it to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("PetOwner"));
+            }
+            //here we are assigning the Admin role to the User that we have registered above 
+
+            IdentityUser user = await UserManager.FindByEmailAsync("user1@gmail.com");
+            var User = new IdentityUser();
+            await UserManager.AddToRoleAsync(user, "PetOwner");
+
+
+            roleCheck = await RoleManager.RoleExistsAsync("Doctor");
+            if (!roleCheck)
+            {
+                //here in this line we are creating admin role and seed it to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Doctor"));
+            }
+            //here we are assigning the Admin role to the User that we have registered above 
+
+            IdentityUser user2 = await UserManager.FindByEmailAsync("doctor@gmail.com");
+            var User2 = new IdentityUser();
+            await UserManager.AddToRoleAsync(user2, "Doctor");
+
+        }
+
     }
 }
