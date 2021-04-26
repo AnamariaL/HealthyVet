@@ -74,44 +74,12 @@
 
 
         </div>
-        <div class="hr-border"></div>
-        <div class="a1">
-            <h2>Clientii nostri:</h2>
+      </div>
+       
 
-            <a href='@Url.Action("AddFeedback", "PetOwner")' class="btn btn-secondary">Adauga comentariu:</a>
-            <table class="table">
-                <thead>
-                    <tr>
+</body>
 
 
-                        <th style="text-align:center">
-
-                        </th>
-
-                        <th style="text-align:center"> </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Feedbacks)
-                    {
-
-                        <tr>
-                            <td style="text-align:center">
-                                @Html.DisplayFor(model => item.Description)
-                            </td>
-                            <td style="text-align:center">
-                                <a asp-action="DeleteFeedback" asp-route-id="@item.Id" class="btn btn-secondary">Sterge comentariu</a>
-                            </td>
-
-                        </tr>
-
-                    }
-                </tbody>
-            </table>
-        </div>
-        </body>
-
- 
 
 
 
