@@ -3,10 +3,10 @@
     ViewData["Title"] = "IndexDoctor";
 }
 
-<h1>Services</h1>
+<h1>Servicii</h1>
 
 <br />
-<a href='@Url.Action("AddService", "Doctor")' class="btn btn-danger">Add services</a>
+<a href='@Url.Action("AddService", "Doctor")' class="btn btn-danger">Adauga serviciu</a>
 <table class="table" >
     <thead class="thead-dark">
         <tr>
@@ -21,8 +21,8 @@
                 @Html.DisplayName("Description")
             </th>
 
-            <th style="text-align:center"> Delete service</th>
-            <th style="text-align:center"> Update service</th>
+            <th style="text-align:center"> Sterge serviciu</th>
+            <th style="text-align:center"> Update serviciu</th>
         </tr>
     </thead>
     <tbody>
@@ -45,10 +45,10 @@
                 @Html.DisplayFor(model => item.Description)
             </td>
             <td style="text-align:center">
-                <a asp-action="DeleteService" asp-route-id="@item.Id" class="btn btn-light">Delete services</a>
+                <a asp-action="DeleteService" asp-route-id="@item.Id" class="btn btn-light">Sterge servicii</a>
             </td>
             <td style="text-align:center">
-                <a asp-action="UpdateServicii" asp-route-id="@item.Id" class="btn btn-light">Update services</a>
+                <a asp-action="UpdateServicii" asp-route-id="@item.Id" class="btn btn-light">Update servicii</a>
             </td>
         </tr>
 

@@ -50,6 +50,12 @@
     <None Include="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
     <None Include="Areas\Identity\Pages\_ViewImports.cshtml" />
     <None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
+    <None Include="wwwroot\js\jquery-1.7.1.min.js" />
+    <None Include="wwwroot\js\jquery.easing.1.3.js" />
+    <None Include="wwwroot\js\PIE.htc" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\slider.js" />
+    <None Include="wwwroot\js\tms-0.4.1.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
