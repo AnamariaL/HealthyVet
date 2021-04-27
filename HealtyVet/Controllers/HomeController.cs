@@ -29,10 +29,22 @@ namespace HealtyVet.Controllers
         {
             return View();
         }
-       
-       
-     
-     
+
+        public IActionResult Link()
+        {
+            return View();
+        }
+        public IActionResult Pictures()
+        {
+            return View();
+        }
+      
+        public IActionResult Stuff()
+        {
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
