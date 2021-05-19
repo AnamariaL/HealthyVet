@@ -1,5 +1,6 @@
 ﻿using HealtyVet.ApplicationLogic.Abstractions;
 using HealtyVet.ApplicationLogic.Data;
+using HealtyVet.ApplicationLogic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,27 +12,46 @@ namespace HealtyVet.ApplicationLogic.Services
         IPetOwnerRepository petownerRepository;
         IFeedbackRepository feedbackRepository;
 
-        public PetOwnerService(IFeedbackRepository feedbackRepository,IPetOwnerRepository petownerRepository)
+        public PetOwnerService(IFeedbackRepository feedbackRepository, IPetOwnerRepository petownerRepository)
         {
             this.petownerRepository = petownerRepository;
             this.feedbackRepository = feedbackRepository;
         }
 
-        public PetOwner GetPetOwnertById(Guid Id)
+        public PetOwner GetPetOwnerById(Guid Id)
         {
             if (Id == null)
             {
                 throw new Exception("Null  id");
             }
 
+
             return petownerRepository.GetPetOwnerById(Id);
 
         }
-     public IEnumerable<PetOwner> GetAll()
+
+        public PetOwner GetPetOwnerByUserId(string userId)
+        {
+            Guid userIdGuid = Guid.Empty;
+            if (!Guid.TryParse(userId, out userIdGuid))
+            {
+                throw new Exception("Invalid Guid Format");
+            }
+
+            var petOwner = petownerRepository.GetPetOwnerByUserId(userIdGuid);
+            if (petOwner == null)
+            {
+                throw new EntityNotFoundException(userIdGuid);
+            }
+
+            return petOwner;
+        }
+
+        public IEnumerable<PetOwner> GetAll()
         {
             return petownerRepository.GetAll();
         }
-   public void AddFeedback(string description)
+        public void AddFeedback(string description)
         {
             feedbackRepository.Add(new Feedback()
             {
