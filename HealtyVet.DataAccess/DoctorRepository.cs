@@ -24,8 +24,8 @@ namespace HealtyVet.DataAccess
         public Doctor GetDoctorByUserId(Guid userId)
         {
             return dbContext.Doctors
-                            .Where(doctor => doctor.Id == userId).Single();
-                            
+                            .Where(doctor => doctor.Id == userId).SingleOrDefault();
+
         }
 
     }

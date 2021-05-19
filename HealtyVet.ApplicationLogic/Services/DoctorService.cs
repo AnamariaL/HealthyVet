@@ -1,5 +1,6 @@
 ﻿using HealtyVet.ApplicationLogic.Abstractions;
 using HealtyVet.ApplicationLogic.Data;
+using HealtyVet.ApplicationLogic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -33,6 +34,22 @@ namespace HealtyVet.ApplicationLogic.Services
         {
             return doctorRepository.GetAll();
         }
+        public Doctor GetDoctorByUserId(string userId)
+        {
+            Guid userIdGuid = Guid.Empty;
+            if (!Guid.TryParse(userId, out userIdGuid))
+            {
+                throw new Exception("Invalid Guid Format");
+            }
+
+            var doctor = doctorRepository.GetDoctorByUserId(userIdGuid);
+            if (doctor == null)
+            {
+                throw new EntityNotFoundException(userIdGuid);
+            }
+
+            return doctor;
+        }
         public void AddService(string description, int price, string type)
         {
             serviceRepository.Add(new Servicii()
@@ -54,11 +71,19 @@ namespace HealtyVet.ApplicationLogic.Services
             serviceRepository.Update(servicii);
         }
 
+        public void GetDoctorById(string badId)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Servicii> GetAllServices()
         {
 
             return serviceRepository.GetAll();
         }
+
+      
+
         public Servicii GetServiceById(Guid Id)
         {
             if (Id == null)
@@ -69,5 +94,7 @@ namespace HealtyVet.ApplicationLogic.Services
             return serviceRepository.GetServiceById(Id);
 
         }
+
+       
     }
 }
