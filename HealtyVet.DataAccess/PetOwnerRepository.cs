@@ -28,6 +28,12 @@ namespace HealtyVet.DataAccess
                             .FirstOrDefault();
         }
 
+        public PetOwner GetPetOwnerByUserId(Guid userId)
+        {
+            return dbContext.PetOwners
+                            .Where(petowner => petowner.Id == userId).SingleOrDefault();
+
+        }
 
     }
 

@@ -8,7 +8,9 @@ namespace HealtyVet.ApplicationLogic.Abstractions
     public interface IPetOwnerRepository : IRepository<PetOwner>
     {
         PetOwner GetPetOwnerById(Guid petownerId);
-        
+
+        PetOwner GetPetOwnerByUserId(Guid userId);
+
         void Add(Feedback feedback);
     }
 }
